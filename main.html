@@ -1,112 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Proxy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        background-color: #020930;
-        font-family: 'Lato', Sans-Serif;
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-      }
-      .text {
-        font-size: 60px;
-        color: white;
-        margin-bottom: 20px;
-      }
-      .input-container {
-        background-color: white;
-        color: #020930;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-      }
-      .input-container input {
-        border: none;
-        outline: none;
-        font-size: 1rem;
-        padding: 0.5rem;
-        width: 250px;
-      }
-      .button {
-        background-color: #101840;
-        color: #f0f0f0;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.5rem;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      .button:hover {
-        background-color: #1a2758;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="text">Proxy</div>
-      <div class="input-container">
-        <input id="url" type="text" placeholder="Insert URL here!">
-      </div>
-      <button class="button" onclick="redirect()">Go!</button>
-    </div>
-</div>
-    <!--Coming Soon-Browser Changes  
-    <div class="container">
-    <input text="placeholder">Google>
-      <button class="button" onclick="">></button>
-     -->
-    <script>
-     // function redrict() {
-      //  const input=getElementById('url')
-      //  let url;
-      function redirect() {
-        const input = document.getElementById('url').value.trim();
-        let url;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>verysigmabypasser</title>
+  <link rel="icon" href="favicon.png"> 
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+  <style>/*HOW UGLY WILL THIS BE??? */
+.text {
+  font-family: 'Comfortaa';
+  color:white;
+  font-size: 125px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 25px;
+  color: white;
+}
+h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+p {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+button {
+  font-family: 'Comfortaa';
+  background-color: #0094ff;
+  color: white;
+  padding: 8px;
+  width: 400px;
+  height: 200px;
+  outline: 10px solid yellow;
+  border: none;
+  cursor: pointer;
+}
 
-        if (isValidURL(input)) {
-          // If it's a valid URL, ensure it starts with http/https
-          url = input.startsWith('http') ? input : 'https://' + input;
-        } else {
-          // Otherwise, search using stored engine (default: Google)
-          const engine = localStorage.getItem('searchEngine') || 'google';
-          //if (engine === 'bing') {
-          //  url = 'https://www.bing.com/search?q=' + encodeURIComponent(input);
-          } else {
-            url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
-          }
+button:hover {
+  background-color: #017fd9;
+}
+button.redrict {
+  background-color: #0099ff;
+  color: white;
+  padding: 8px;
+  width: 400px;
+  height: 200px;
+  outline: 10px solid orange;
+  border: none;
+  cursor: pointer;
+}
+button.redrict:hover {
+  background-color: #0065a9;
+}
+button.bookmark {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 200px;
+  height: 100px;
+}
+.container {
+  font-family: 'Comfortaa';
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color:red;
+  color:white;
+}
+input{
+  font-family: 'Comfortaa';
+  width:700px;
+  height: 175px;
+  background-color:yellow;
+  color:black;
+  outline: 15px solid orange;
+  margin-bottom:25px;
+}
+.toggle-bar {
+  position: absolute;
+  top: calc(100% - 44px);
+  right: 20px;
+  background-color: #0099ff;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  user-select: none;
+}
+
+.toggle-button {
+  background-color: #0094ff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.rectangle {
+  display: flex;
+  flex-direction: column;
+  background-color: #2081c8;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+  max-width: 350px;
+  color: white;
+}
+#bookmarksContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 300px;
+  background-color: #003b5c;
+  color: white;
+  padding: 20px;
+}
+
+#bookmarksContainer h2 {
+  margin-bottom: 15px;
+  border-bottom: 2px solid #00bfff;
+  padding-bottom: 5px;
+}
+
+.bookmark-link {
+  color: #00bfff;
+  text-decoration: none;
+  display: block;
+  padding: 8px;
+  background-color: #005b88;
+}
+
+.bookmark-link:hover {
+  background-color: #0073aa;
+}</style>
+</head>
+<body>
+  <div id="bookmarksContainer">
+    <h2>Bookmarks</h2>
+  </div>
+  <div class="container">
+    <div class="text">VSB Proxy</div>
+    <input type="text" id="url" placeholder="insert link here"/>
+    <button class="redirect" onclick="redirect()">Click Here :)</button>
+    <button class="redirect bookmark" onclick="bookmark()">Bookmark Here:)</button>
+  </div>
+    <script>// parts from chatgpt might change later
+function redirect() {
+  const input = document.getElementById("url").value.trim();
+  let finalUrl;
+
+  if (isRealURL(input)) {
+    finalUrl = input.startsWith("http") ? input : "https://" + input;
+  } else {
+    finalUrl = "https://www.google.com/search?q=" + encodeURIComponent(input);
+  }
+
+  // Add loading splash iframe
+  const loadingFrame = document.createElement("iframe");
+  loadingFrame.src = "loading.html";
+  loadingFrame.style.position = "fixed";
+  loadingFrame.style.top = 0;
+  loadingFrame.style.left = 0;
+  loadingFrame.style.width = "100%";
+  loadingFrame.style.height = "100%";
+  loadingFrame.style.border = "none";
+  loadingFrame.style.zIndex = 9999;
+  document.body.appendChild(loadingFrame);
+
+  // Try to open in new tab
+  const newTab = window.open("loading.html");
+
+  setTimeout(() => {
+    if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+      window.location.href = finalUrl;
+    } else {
+      newTab.location.href = finalUrl;
+      setTimeout(() => {
+        if (document.body.contains(loadingFrame)) {
+          document.body.removeChild(loadingFrame);
         }
+      }, 500);
+    }
+  }, 1000);
+}
 
-        // Perform the redirect
-        window.location.href = url;
-      }
+function isRealURL(str) {
+  const pattern = /^(https?:\/\/)?([\w\d\-]+\.)+[\w]{2,}(\/.*)?$/i;
+  return pattern.test(str);
+}
 
-      // Helper function to validate URLs
-      function isValidURL(str) {
-        try {
-          new URL(str.startsWith('http') ? str : 'https://' + str);
-          return true;
-        } catch (_) {
-          return false;
-        }
-      }
-    </script>
-  </body>
+// Bookmark a URL
+function bookmark() {
+  const input = document.getElementById("url").value.trim();
+  let bookmarkedUrl;
+
+  if (isRealURL(input)) {
+    bookmarkedUrl = input.startsWith("http") ? input : "https://" + input;
+
+    const bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+
+    if (!bookmarks.includes(bookmarkedUrl)) {
+      bookmarks.push(bookmarkedUrl);
+      localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+      alert("Bookmarked: " + bookmarkedUrl);
+    } else {
+      alert("Already bookmarked.");
+    }
+
+    showBookmarks();
+  } else {
+    alert("Please enter a valid URL to bookmark.");
+  }
+}
+
+// Display bookmarks
+function showBookmarks() {
+  const container = document.getElementById("bookmarksContainer");
+  container.innerHTML = "";
+
+  const bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+
+  if (bookmarks.length === 0) {
+    container.innerHTML = "<p>No bookmarks yet.</p>";
+    return;
+  }
+
+  bookmarks.forEach(url => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.textContent = url;
+    link.target = "_blank";
+    link.className = "bookmark-link";
+    container.appendChild(link);
+    container.appendChild(document.createElement("br"));
+  });
+}
+
+// Load bookmarks on page load
+window.onload = () => {
+  showBookmarks();
+};</script>
+</body>
 </html>
