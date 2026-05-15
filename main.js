@@ -1,1 +1,1 @@
-window.location.href="https://gco-12345.github.io/proxy1/main.html"
+window.location.href="https://gco-12345.github.io/proxy.1/main.html"
