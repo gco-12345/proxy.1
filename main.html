@@ -159,38 +159,17 @@ function redirect() {
   let finalUrl;
 
   if (isRealURL(input)) {
-    finalUrl = input.startsWith("http") ? input : "https://" + input;
+    finalUrl = input.startsWith("http")
+      ? input
+      : "https://" + input;
   } else {
-    finalUrl = "https://www.google.com/search?q=" + encodeURIComponent(input);
+    finalUrl =
+      "https://www.google.com/search?q=" +
+      encodeURIComponent(input);
   }
 
-  // Add loading splash iframe
-  const loadingFrame = document.createElement("iframe");
-  loadingFrame.src = "loading.html";
-  loadingFrame.style.position = "fixed";
-  loadingFrame.style.top = 0;
-  loadingFrame.style.left = 0;
-  loadingFrame.style.width = "100%";
-  loadingFrame.style.height = "100%";
-  loadingFrame.style.border = "none";
-  loadingFrame.style.zIndex = 9999;
-  document.body.appendChild(loadingFrame);
-
-  // Try to open in new tab
-  const newTab = window.open("loading.html");
-
-  setTimeout(() => {
-    if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
-      window.location.href = finalUrl;
-    } else {
-      newTab.location.href = finalUrl;
-      setTimeout(() => {
-        if (document.body.contains(loadingFrame)) {
-          document.body.removeChild(loadingFrame);
-        }
-      }, 500);
-    }
-  }, 1000);
+  // Directly open final URL
+  window.location.href = finalUrl;
 }
 
 function isRealURL(str) {
