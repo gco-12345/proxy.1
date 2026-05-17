@@ -152,6 +152,8 @@ input{
     <input type="text" id="url" placeholder="insert link here"/>
     <button class="redirect" onclick="redirect()">Click Here :)</button>
     <button class="redirect bookmark" onclick="bookmark()">Bookmark Here:)</button>
+    <button class="redirect" onclick="google()">Google :)</button>
+    <button class="redirect" onclick="youtube()">youtube ;)</button>
   </div>
     <script>// parts from chatgpt might change later
 function redirect() {
@@ -172,6 +174,16 @@ function redirect() {
   window.location.href = finalUrl;
 }
 
+function google() {
+  const finalUrl = "https://www.google.com";
+  window.location.href = finalUrl;
+}
+
+function youtube() {
+  const finalUrl = "https://www.youtube.com";
+  window.location.href = finalUrl;
+}
+      
 function isRealURL(str) {
   const pattern = /^(https?:\/\/)?([\w\d\-]+\.)+[\w]{2,}(\/.*)?$/i;
   return pattern.test(str);
